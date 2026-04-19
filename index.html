@@ -59,8 +59,25 @@
             }
         }
 
-        /* ── FOOTER: dark background, centered, bright white ── */
+        /* ── VIDEO: contained, no auto-expand ── */
+        .video-wrapper {
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            display: block;
+            border-radius: 8px;
+            object-fit: contain;
+            background: #000;
+        }
+
+        /* ── FOOTER: normal flow, only shows at page bottom ── */
         .footer {
+            position: static !important;
             background-color: #111111 !important;
             background-image: none !important;
             display: flex;
@@ -152,9 +169,25 @@
     <!-- HOME -->
     <section id="home">
         <div class="video-wrapper">
-            <video controls>
-                <source src="images/0209.mp4" type="video/mp4">
+            <video controls preload="metadata" poster="">
+                <source src="images/0209.mp4#t=9" type="video/mp4">
             </video>
+            <script>
+                (function() {
+                    var vid = document.currentScript.previousElementSibling;
+                    vid.addEventListener('loadedmetadata', function() {
+                        vid.currentTime = 9;
+                    });
+                    vid.addEventListener('seeked', function() {
+                        var canvas = document.createElement('canvas');
+                        canvas.width = vid.videoWidth;
+                        canvas.height = vid.videoHeight;
+                        canvas.getContext('2d').drawImage(vid, 0, 0);
+                        vid.setAttribute('poster', canvas.toDataURL('image/jpeg'));
+                        vid.currentTime = 0;
+                    }, { once: true });
+                })();
+            </script>
         </div>
     </section>
 
@@ -296,7 +329,7 @@
         © 2026 Tesfaye Meskele — All rights reserved.
     </div>
     <div class="footer-credits">
-        Designed by Amanuel Tesfaye/
+        Designed by Amanuel Tesfaye &amp; Workneh Tamire /
         <a href="https://www.freepik.com" target="_blank">Freepik</a>
     </div>
 </footer>
