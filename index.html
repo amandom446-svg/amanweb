@@ -9,7 +9,16 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <style>
-        /* ── HERO HEADER MOBILE FIX ── */
+        /* ── HERO HEADER: push content below fixed navbar ── */
+        .hero {
+            padding-top: 80px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-bottom: 30px;
+            text-align: center;
+            box-sizing: border-box;
+            width: 100%;
+        }
         .hero h1 {
             font-size: clamp(1.6rem, 7vw, 3.5rem);
             line-height: 1.2;
@@ -19,6 +28,11 @@
         .hero h5 {
             font-size: clamp(0.85rem, 3.5vw, 1.25rem);
             line-height: 1.4;
+        }
+        @media (max-width: 767px) {
+            .hero {
+                padding-top: 90px;
+            }
         }
 
         /* ── US DEPARTMENT IMAGES MOBILE FIX ── */
@@ -34,32 +48,50 @@
             }
         }
 
-        /* ── FOOTER LAYOUT ── */
+        /* ── CHILDHOOD IMAGE MOBILE FIX ── */
+        #childhood-journey img {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 12px auto;
+        }
+        @media (max-width: 768px) {
+            #childhood-journey img {
+                max-width: 100%;
+            }
+        }
+
+        /* ── FOOTER: centered, bright white text ── */
         .footer {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
             gap: 10px;
-            padding: 16px 24px;
+            padding: 20px 24px;
         }
         .footer .copy-right {
-            text-align: left;
-            font-size: 13px;
+            color: #ffffff !important;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.7);
         }
         .footer .footer-right {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: center;
             gap: 8px;
         }
         .footer .footer-credits {
+            color: #ffffff !important;
             font-size: 12px;
-            opacity: 0.8;
-            text-align: right;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .footer .footer-credits a {
+            color: #ffffff !important;
             text-decoration: underline;
         }
         .footer-social {
@@ -67,17 +99,11 @@
             gap: 14px;
             align-items: center;
         }
-        @media (max-width: 576px) {
-            .footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .footer .footer-right {
-                align-items: flex-start;
-            }
-            .footer .footer-credits {
-                text-align: left;
-            }
+        .footer-social a {
+            color: #ffffff !important;
+        }
+        .footer-social svg {
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
         }
     </style>
 
